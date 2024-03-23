@@ -39,6 +39,7 @@
     "jest": "^27.5.1",
     "jest-junit": "^16.0.0"
   },
+  "dev":"docker-compose -f docker-compose.dev.yml up",
   "jest": {
     "reporters": [
       "default",

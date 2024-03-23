@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="0" errors="0" time="0.482">
-  <testsuite name="isEven" errors="0" failures="0" skipped="0" timestamp="2024-03-20T12:22:59" time="0.373" tests="4">
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="7.831">
+  <testsuite name="isEven" errors="0" failures="0" skipped="0" timestamp="2024-03-20T14:52:04" time="5.498" tests="4">
     <testcase classname="isEven returns true if number is even" name="isEven returns true if number is even" time="0.002">
     </testcase>
     <testcase classname="isEven returns false if number is odd" name="isEven returns false if number is odd" time="0">

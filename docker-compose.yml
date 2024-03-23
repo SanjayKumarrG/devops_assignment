@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: web
+    image: react-docker:1.0.0-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - myweb:/app
+
+volumes:
+  myweb:
