@@ -2,12 +2,14 @@ pipeline {
     agent {
     	label 'tests'
     }
-    stage('Build') {
+
+    stages {
+    	stage('Installation') {
             steps {
+                // Install project dependencies
                 sh 'npm install'
             }
         }
-    stages {
         stage('Build') {
             steps {
                 sh 'npm run build'
