@@ -2,6 +2,11 @@ pipeline {
     agent {
     	label 'tests'
     }
+    stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
     stages {
         stage('Build') {
             steps {
