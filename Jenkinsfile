@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+    	label 'tests'
+    }
 
     environment {
         NODEJS_VERSION = '12.22.9'
