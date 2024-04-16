@@ -1,50 +1,44 @@
 pipeline {
-  environment {
-    dockerimagename = "gsanjaykumar/react-app"
-    dockerImage = ""
-  }
-  agent any
-  stages {
-    stage('Checkout Source') {
-      steps {
-        script {
-          git 'https://github.com/SanjayKumarrG/devops_assignment.git'
+    agent {
+        label 'tests' 
+    }
+
+    environment {
+        NODEJS_VERSION = '12.22.9'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/SanjayKumarrG/devops_assignment.git'
+            }
         }
-      }
-    }
-    stage('Build image') {
-      steps{
-        script {
-          dockerImage = docker.build dockerimagename
+
+        stage('Installation') {
+            tools {
+                nodejs NODEJS_VERSION
+            }
+            steps {
+                sh 'npm install'
+            }
         }
-      }
-    }
-    stage('Pushing Image') {
-      environment {
-        registryCredential = 'dockerhub-credentials'
-      }
-      steps{
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
-          }
+
+        stage('Build') {
+            steps {
+                sh 'npm build'
+            }
         }
-      }
     }
-    stage('Deploying React.js container to Kubernetes') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "deploymentservice.yaml", kubeconfigId: "mykubeconfig")
+
+    post {
+        success {
+            // Actions to perform when the build succeeds
+            echo 'Build successful!'
         }
-      }
+        failure {
+            // Actions to perform when the build fails
+            echo 'Build failed!'
+        }
     }
-  }
-  post {
-    success {
-      echo 'Build successful! Application deployed.'
-    }
-    failure {
-      echo 'Build failed! Take necessary actions.'
-    }
-  }
 }
+
