@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/SanjayKumarrG/devops_assignment.git'
+                git 'git@github.com:SanjayKumarrG/devops_assignment.git'
             }
         }
 
