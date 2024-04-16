@@ -8,11 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'git@github.com:SanjayKumarrG/devops_assignment.git'
-            }
-        }
 
         stage('Installation') {
             tools {
@@ -41,4 +36,3 @@ pipeline {
         }
     }
 }
-
